@@ -21,7 +21,7 @@ function payu_link($params) {
 	
 
 	# Invoice Variables
-	$txnid = $params['invoiceid'];
+	$txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);;
 	$productinfo = $params["description"];
     $amount = $params['amount']; # Format: ##.##
 
@@ -61,8 +61,8 @@ function payu_link($params) {
 <input type="hidden" name="phone" value="'.$phone.'" />
 <input type="hidden" name="amount" value="'.$amount.'" />
 <input type="hidden" name="hash" value="'.$hash.'" />
-<input type="hidden" name="surl" value="https://www.ideacubehosting.com/whmcs/modules/response1.php?" />
-<input type="hidden" name="furl" value="https://www.ideacubehosting.com/whmcs/modules/response1.php?" />
+<input type="hidden" name="surl" value="https://www.site.com/whmcs/response.php" />  # Add your site URL here
+<input type="hidden" name="furl" value="https://www.site.com/whmcs/response.php" />  # Add your site URL here
 <input type="submit" value="Pay Now" />
 </form>';
 
